@@ -8,7 +8,7 @@ using Kobi.RecreationalRegex;
 using System.Text.RegularExpressions;
 using Kobi.RecreationalRegex.RegexUtilities;
 
-namespace Kobi.RecreationalRegex
+namespace Kobi.RecreationalRegex.PcreGrammar
 {
     public abstract class Tests
     {
@@ -37,7 +37,7 @@ namespace Kobi.RecreationalRegex
         {
             get
             {
-                return Kobi.RecreationalRegex.PcreGrammar.PcreGrammar.LatestAttempt; 
+                return PcreGrammar.LatestAttempt; 
             }
         }
     } 
@@ -49,14 +49,14 @@ namespace Kobi.RecreationalRegex
         {
             get
             {
-                return Kobi.RecreationalRegex.PcreGrammar.PcreGrammar.FirstAttempt; 
+                return PcreGrammar.FirstAttempt; 
             }
         }
     }
 
     public class NumberedStatesTests : Tests
     {
-        private Regex _regex = PcreGrammar.PcreGrammar.NumberedStatesPcreGrammarRegex();
+        private Regex _regex = PcreGrammar.NumberedStatesPcreGrammarRegex();
 
         public override Regex GrammarRegex
         {
@@ -69,7 +69,7 @@ namespace Kobi.RecreationalRegex
     
     public class NumberedStatesAndCapturesTests : Tests
     {
-        private Regex _regex = PcreGrammar.PcreGrammar.NumberedStatesPcreGrammarWithCapturesRegex();
+        private Regex _regex = PcreGrammar.NumberedStatesPcreGrammarWithCapturesRegex();
 
         public override Regex GrammarRegex
         {
