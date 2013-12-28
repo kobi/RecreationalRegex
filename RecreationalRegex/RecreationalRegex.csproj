@@ -47,6 +47,7 @@
     <Compile Include="Mazes\Mazes.Older.cs" />
     <Compile Include="Mazes\Mazes.cs" />
     <Compile Include="Mazes\MazesDebugHelper.cs" />
+    <Compile Include="Mazes\Tests.cs" />
     <Compile Include="PcreGrammar\Builder\BinaryStacksStateWriter.cs" />
     <Compile Include="PcreGrammar\Builder\NonCapturingGroupWriter.cs" />
     <Compile Include="PcreGrammar\Examples.cs" />
