@@ -9,17 +9,17 @@ namespace Kobi.RecreationalRegex.Mazes
     public static class ExampleMazes
     {
 
-        public static readonly string SimpleRight = @"  S    E ";
-        public static readonly string SimpleLeft = @"  E    S ";
-        public static readonly string SimpleRightFull = @"S     E";
-        public static readonly string SimpleDown = @"
+        public const string SimpleRight = @"  S    E ";
+        public const string SimpleLeft = @"  E    S ";
+        public const string SimpleRightFull = @"S     E";
+        public const string SimpleDown = @"
 █ █
 █S█
 █ █
 █ █
 █E█
 █ █";
-        public static readonly string SimpleUp = @"
+        public const string SimpleUp = @"
 █ █
 █E█
 █ █
@@ -27,7 +27,7 @@ namespace Kobi.RecreationalRegex.Mazes
 █S█
 █ █
 ";
-        public static readonly string MedDownRight = @"
+        public const string MedDownRight = @"
 █ █
 █S███████
 █       █
@@ -35,14 +35,14 @@ namespace Kobi.RecreationalRegex.Mazes
       █E█
       █ █";
 
-        public static readonly string Small = @"
+        public const string Small = @"
 ██████████
 █S█      █
 █ █ █ █ ██
 █   █ █ E█
 ██████████
 ";
-        public static readonly string SmallNoSolution = @"
+        public const string SmallNoSolution = @"
 ██████████
 █S█      █
 █ ███ █ ██
@@ -53,7 +53,7 @@ namespace Kobi.RecreationalRegex.Mazes
         /// <summary>
         /// Source: http://rosettacode.org/wiki/Maze_generation#F.23
         /// </summary>
-        public static readonly string BigGood = @"
+        public const string BigGood = @"
 +-+-+-+-+-+-+-+-+-+-+
 S         |     |   |
 + +-+-+-+-+ +-+ + + +
@@ -77,7 +77,7 @@ S         |     |   |
 +-+-+-+-+-+-+-+-+-+-+";
 
 
-        public static readonly string BigBad = @"
+        public const string BigBad = @"
 +-+-+-+-+-+-+-+-+-+-+
 S         |     |   |
 + +-+-+-+-+ +-+ + + +
@@ -104,7 +104,7 @@ S         |     |   |
         /// <summary>
         /// Source: http://rosettacode.org/wiki/Maze_generation#Ruby
         /// </summary>
-        public static readonly string BigGood2 = @"
+        public const string BigGood2 = @"
 +-+-+-+-+-+-+-+-+-+-+-+-+-+S+-+-+-+-+-+-+
 |         | |           | |   |     |   |
 + +-+ +-+ + + +-+-+-+ + + +-+ + +-+ +-+ +
@@ -130,7 +130,7 @@ S         |     |   |
         /// <summary>
         /// Source: http://rosettacode.org/wiki/Maze_generation#Ruby
         /// </summary>
-        public static readonly string BigBad2 = @"
+        public const string BigBad2 = @"
 +-+-+-+-+-+-+-+-+-+-+-+-+-+S+-+-+-+-+-+-+
 |         | |           | |   |     |   |
 + +-+ +-+ + + +-+-+-+ + + +-+ + +-+ +-+ +
