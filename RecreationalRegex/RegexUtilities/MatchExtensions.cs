@@ -38,6 +38,39 @@ namespace Kobi.RecreationalRegex.RegexUtilities
 
             }
         }
+        /*
+        public static void Print(this MatchCollection matchCollection)
+        {
+            Console.ResetColor();
+            Console.WriteLine("Found {0} matches.", matchCollection.Count);
+            foreach (Match match in matchCollection)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(match.Value);
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Captured Groups:");
+                foreach (Group group in match.Groups)
+                {
+                    Console.WriteLine("Length:{0}\tText:{1}\tCaptures:{2}", group.Length, group, group.Captures.Count);
+                }
 
+                Console.WriteLine();
+            }
+        }
+        */
+
+        public static void PrintMatchesValues(this MatchCollection matchCollection)
+        {
+            if (matchCollection.Count == 0)
+            {
+                Console.WriteLine("No matches.");
+                return;
+            }
+
+            foreach (Match match in matchCollection)
+            {
+                Console.WriteLine(match.Value);
+            }
+        }
     }
 }
