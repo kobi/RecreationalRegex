@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EngineBehaviour\OptimizeZeorLength.cs" />
+    <Compile Include="EngineBehaviour\OptimizeZeroLength.cs" />
     <Compile Include="Mazes\ExampleMazes.cs" />
     <Compile Include="Mazes\Mazes.Older.cs" />
     <Compile Include="Mazes\Mazes.cs" />
@@ -51,7 +51,9 @@
     <Compile Include="Mazes\Tests.cs" />
     <Compile Include="Numeric\DivisibleByThree.cs" />
     <Compile Include="Numeric\ParseNumbers.cs" />
+    <Compile Include="Parentheses\Examples.cs" />
     <Compile Include="Parentheses\Parentheses.cs" />
+    <Compile Include="Parentheses\Tests.cs" />
     <Compile Include="PcreGrammar\Builder\BinaryStacksStateWriter.cs" />
     <Compile Include="PcreGrammar\Builder\NonCapturingGroupWriter.cs" />
     <Compile Include="PcreGrammar\Examples.cs" />

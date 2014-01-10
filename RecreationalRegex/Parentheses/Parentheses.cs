@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Kobi.RecreationalRegex.Parentheses
@@ -13,8 +14,10 @@ namespace Kobi.RecreationalRegex.Parentheses
         /// </summary>
         public static readonly string Basic = @"^(?<B>)abc(?<A-B>a)\k<A>?";
 
-
-        public static readonly string BalancedParentheses = @"
+        /// <summary>
+        /// Match mixed balanced parentheses - http://kobikobi.wordpress.com/2010/12/14/net-regex-matching-mixed-balanced-parentheses/
+        /// </summary>
+        public static readonly string BalancedParenthesesPattern = @"
 (
     [^(){}\[\]]+
     | \( (?=[^)]* (?'Memory' \) ) )
@@ -24,6 +27,8 @@ namespace Kobi.RecreationalRegex.Parentheses
 )+?
 (?(Memory) (?!))
 ";
+
+        public static readonly Regex BalancedParenthesesRegex = new Regex(BalancedParenthesesPattern, RegexOptions.IgnorePatternWhitespace);
 
         /// <summary>
         /// From http://retkomma.wordpress.com/2009/09/26/regex-balancing-group-in-depth/
