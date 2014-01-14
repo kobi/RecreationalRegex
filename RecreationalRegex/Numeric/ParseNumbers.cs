@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Kobi.RecreationalRegex.Numeric
@@ -43,7 +44,7 @@ namespace Kobi.RecreationalRegex.Numeric
 )+
 ";
 
-        public static readonly string DecimalNumberAndUnary = @"
+        public static readonly string DecimalNumberAndUnaryPattern = @"
 ^
 (?>
     (?=[0-9])   # optimization - don't multiply when we don't have a digit.
@@ -81,6 +82,10 @@ namespace Kobi.RecreationalRegex.Numeric
 \s*$
 (?(Decimal)(?!))
 ";
+        public static Regex DecimalNumberAndUnaryPatternRegex = new Regex(DecimalNumberAndUnaryPattern,
+            RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+
+
         /*
         public static Regex DecimalNumberAndEqualBinaryNumberRegex = new Regex(DecimalNumberAndEqualBinaryNumber,
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
