@@ -49,6 +49,9 @@
     <Compile Include="Mazes\Mazes.cs" />
     <Compile Include="Mazes\MazesDebugHelper.cs" />
     <Compile Include="Mazes\Tests.cs" />
+    <Compile Include="Numeric\DivisibleByThreeTests.cs" />
+    <Compile Include="Numeric\DecimalAndBinaryTests.cs" />
+    <Compile Include="Numeric\IrreducibleFractionsTests.cs" />
     <Compile Include="Numeric\DecimalNumbersAndUnaryTests.cs" />
     <Compile Include="Numeric\DivisibleByThree.cs" />
     <Compile Include="Numeric\Examples.cs" />

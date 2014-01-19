@@ -82,7 +82,7 @@ namespace Kobi.RecreationalRegex.Numeric
 \s*$
 (?(Decimal)(?!))
 ";
-        public static Regex DecimalNumberAndUnaryPatternRegex = new Regex(DecimalNumberAndUnaryPattern,
+        public static Regex DecimalNumberAndUnaryRegex = new Regex(DecimalNumberAndUnaryPattern,
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
 
@@ -90,7 +90,7 @@ namespace Kobi.RecreationalRegex.Numeric
         public static Regex DecimalNumberAndEqualBinaryNumberRegex = new Regex(DecimalNumberAndEqualBinaryNumber,
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
         */
-        public static readonly string DecimalNumberAndEqualBinaryNumber = @"
+        public static readonly string DecimalNumberAndEqualBinaryNumberPattern = @"
 \b
 (?>
     (?=[0-9])
@@ -152,9 +152,11 @@ namespace Kobi.RecreationalRegex.Numeric
 (?(Decimal)(?!))
 (?(Binary)(?!))
 ";
+        public static Regex DecimalNumberAndEqualBinaryNumberRegex = new Regex(DecimalNumberAndEqualBinaryNumberPattern,
+                                                                               RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
 
-        public static readonly string IrreducibleFraction = @"
+        public static readonly string IrreducibleFractionPattern = @"
 
 (?>
     (?=[0-9])
@@ -221,7 +223,11 @@ namespace Kobi.RecreationalRegex.Numeric
 )+
 # check reducible - brute force for every I
 (?<i>){100} # i = 100;
+
+# incomplete :-(
 ";
+        public static Regex IrreducibleFractionRegex = new Regex(IrreducibleFractionPattern,
+    RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 
     }
 }
