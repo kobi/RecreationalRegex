@@ -30,29 +30,29 @@ namespace Kobi.RecreationalRegex.PcreGrammar
         }
     }
 
-    [TestFixture]
-    public class WrongRegexTests : Tests
-    {
-        public override Regex GrammarRegex
-        {
-            get
-            {
-                return PcreGrammar.LatestAttempt; 
-            }
-        }
-    } 
-    
-    [TestFixture]
-    public class WrongRegexFirstAttemptTests : Tests
-    {
-        public override Regex GrammarRegex
-        {
-            get
-            {
-                return PcreGrammar.FirstAttempt; 
-            }
-        }
-    }
+    //[TestFixture]
+    //public class WrongRegexTests : Tests
+    //{
+    //    public override Regex GrammarRegex
+    //    {
+    //        get
+    //        {
+    //            return PcreGrammar.LatestAttempt; 
+    //        }
+    //    }
+    //}
+
+    //[TestFixture]
+    //public class WrongRegexFirstAttemptTests : Tests
+    //{
+    //    public override Regex GrammarRegex
+    //    {
+    //        get
+    //        {
+    //            return PcreGrammar.FirstAttempt; 
+    //        }
+    //    }
+    //}
 
     public class NumberedStatesTests : Tests
     {
