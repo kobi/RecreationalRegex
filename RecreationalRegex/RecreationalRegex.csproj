@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combinatorics\CartesianProduct.cs" />
+    <Compile Include="Combinatorics\CartesianProductTests.cs" />
     <Compile Include="EngineBehaviour\OptimizeZeroLength.cs" />
     <Compile Include="Mazes\ExampleMazes.cs" />
     <Compile Include="Mazes\Mazes.Older.cs" />
