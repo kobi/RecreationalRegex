@@ -84,6 +84,9 @@
     <Compile Include="StackOverflowAnswers\Examples.cs" />
     <Compile Include="StackOverflowAnswers\StackOverflowAsnwers.cs" />
     <Compile Include="StackOverflowAnswers\Tests.cs" />
+    <Compile Include="Sudoku\ExampleSolutions.cs" />
+    <Compile Include="Sudoku\SolutionValidator.cs" />
+    <Compile Include="Sudoku\SolutionValidatorTests.cs" />
     <Compile Include="WordLengths\Examples.cs" />
     <Compile Include="WordLengths\Fibonacci.cs" />
     <Compile Include="WordLengths\Simple.cs" />
