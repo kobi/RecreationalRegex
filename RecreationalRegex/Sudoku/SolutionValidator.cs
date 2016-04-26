@@ -2,8 +2,8 @@
 
 namespace Kobi.RecreationalRegex.Sudoku
 {
-    //note: there are some very nice solitions on http://codegolf.stackexchange.com/q/78210/7762
-    //A giant negative lookahead is probably a better approach here.
+    //Note: there are *better* solitions on http://codegolf.stackexchange.com/q/78210/7762
+    //A giant negative lookahead is a better approach here.
 
     public class SolutionValidator
     {
@@ -12,17 +12,12 @@ namespace Kobi.RecreationalRegex.Sudoku
         //public static readonly string Columns = @"^(?=((?=((?<A>.).{1,8})+$).){9})";
         //public static readonly string Groups = @"^(?=((?=((?<A>.){3}.{0,6})+)...){3})";
 
-
-        // idea: Rows/Columns/Squares are the same.
-        // groups of:
-        // Take 9, skip 0, 9 times
-        // Take 1, skip 8, 9 times
-        // Take 3, skip 6, 3 times (or 9 times, who cares?)
         public static readonly string SudokuValidatorPattern = @"
 ^(?=(?<A>.)+)                           # Rows
 (?=((?=((?<A>.).{0,8})+$).){9})         # Columns
 (?=((?=((?<A>.){3}.{0,6})+)...){3})     # Squares
-(
+# now A has sequential groups of 9 characters.
+(           #Check each group of 9 characters.
     (?!
         (
             (
@@ -40,5 +35,11 @@ namespace Kobi.RecreationalRegex.Sudoku
 
         public static readonly Regex SudokuValidator = new Regex(SudokuValidatorPattern,
             RegexOptions.IgnorePatternWhitespace | RegexOptions.ExplicitCapture);
+
+        // another idea: Rows/Columns/Squares are the same.
+        // groups of:
+        // Take 9, skip 0, 9 times
+        // Take 1, skip 8, 9 times
+        // Take 3, skip 6, 3 times (from 3 locations) (or 9 times, who cares?)
     }
 }
