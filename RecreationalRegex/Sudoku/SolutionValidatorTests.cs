@@ -31,31 +31,5 @@ namespace Kobi.RecreationalRegex.Sudoku
             var match = SolutionValidator.SudokuValidator.Match(solution);
             Assert.IsFalse(match.Success);
         }
-
-        [Ignore]
-        [TestCaseSource(typeof (ExampleSolutions), nameof(ExampleSolutions.Invalid))]
-        public void PrintCaptures(string solution)
-        {
-            var match = SolutionValidator.SudokuValidator.Match(solution);
-            if (match.Success)
-            {
-                var groups = match.Groups["S"].Captures.Cast<Capture>()
-                    .Select((c, i) => new {Digit = c.Value, i})
-                    .GroupBy(g => g.i/9, g => g.Digit, (i, g) => String.Concat(g))
-                    .ToList();
-
-                foreach (var group in groups)
-                {
-                    Console.Write(group);
-                    if (group.Distinct().Count() < group.Length)
-                    {
-                        Console.Write(" !");
-                    }
-                    Console.WriteLine();
-                }
-                Console.WriteLine();
-                Assert.Fail("Should not match this string");
-            }
-        }
     }
 }

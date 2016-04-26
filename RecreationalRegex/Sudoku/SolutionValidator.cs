@@ -2,6 +2,9 @@
 
 namespace Kobi.RecreationalRegex.Sudoku
 {
+    //note: there are some very nice solitions on http://codegolf.stackexchange.com/q/78210/7762
+    //A giant negative lookahead is probably a better approach here.
+
     public class SolutionValidator
     {
         //public static readonly string RowsTooLong = @"^(?=((?<A>.){9})+)"; //just matched everything :P next line is better
@@ -19,29 +22,20 @@ namespace Kobi.RecreationalRegex.Sudoku
 ^(?=(?<A>.)+)                           # Rows
 (?=((?=((?<A>.).{0,8})+$).){9})         # Columns
 (?=((?=((?<A>.){3}.{0,6})+)...){3})     # Squares
-.{72} # go to position 72, have 9 digits ahead.
-(?=.{9}$)   #just an assert
 (
     (?!
         (
-            ((?<=(?<S>\k<A>).*)|(?<=(?<T>\k<A>).*))??
+            (
+                (?(S)!|(?=.*(?<S>\k<A>))) #(?=.*(?<S>\k<A>)) is enough and shorter, but very slow.
+                |
+                (?(T)!|(?=.*(?<T>\k<A>)))
+            )?
             (?<-A>.)
         ){9}
-        (?<=(?=\k<S>)\k<T>.*)
+        (?=.*(?=\k<S>)\k<T>)
     )
     (?<-A>){9}
 ){27}
-
-#(?=
-#    (
-#        (?<=(?<S>\k<A>).*)
-#        (?<-A>)
-#        .
-#        #(?=(.(?<=(?!\k<A>)\k<S>.*)(?<-A>))+$))
-#        
-#    ){9}    #+$
-#){27} #{27}
-
 ";
 
         public static readonly Regex SudokuValidator = new Regex(SudokuValidatorPattern,
