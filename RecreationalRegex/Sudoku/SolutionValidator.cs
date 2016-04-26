@@ -2,8 +2,8 @@
 
 namespace Kobi.RecreationalRegex.Sudoku
 {
-    //Note: there are *better* solitions on http://codegolf.stackexchange.com/q/78210/7762
-    //A giant negative lookahead is a better approach here.
+    //A giant negative lookahead is a better approach here. 
+    //There are *better* solutions on http://codegolf.stackexchange.com/q/78210/7762
 
     public class SolutionValidator
     {
