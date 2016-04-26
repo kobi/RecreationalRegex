@@ -12,9 +12,10 @@ namespace Kobi.RecreationalRegex.Sudoku
         public void CountCaptures(string solution)
         {
             var match = SolutionValidator.SudokuValidator.Match(solution);
-            var captures = match.Groups["S"].Captures.Count;
+            var captures = match.Groups["A"].Captures.Count;
             Assert.IsTrue(match.Success);
-            Assert.AreEqual(81*3, captures);
+            //Assert.AreEqual(81*3, captures);
+            Assert.AreEqual(0, captures);
         }
 
         [TestCaseSource(typeof (ExampleSolutions), nameof(ExampleSolutions.Valid))]
@@ -31,6 +32,7 @@ namespace Kobi.RecreationalRegex.Sudoku
             Assert.IsFalse(match.Success);
         }
 
+        [Ignore]
         [TestCaseSource(typeof (ExampleSolutions), nameof(ExampleSolutions.Invalid))]
         public void PrintCaptures(string solution)
         {

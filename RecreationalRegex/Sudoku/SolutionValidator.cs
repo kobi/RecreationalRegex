@@ -21,14 +21,27 @@ namespace Kobi.RecreationalRegex.Sudoku
 (?=((?=((?<A>.){3}.{0,6})+)...){3})     # Squares
 .{72} # go to position 72, have 9 digits ahead.
 (?=.{9}$)   #just an assert
-(?=
-    (
-        (?<=(?<S>\k<A>).*)
-        (?<-A>)
-        .
-        (?!(.(?<=(?=\k<A>)\k<S>.*)(?<-A>))+)
-    ){9}    #+$
-){27} #{27}
+(
+    (?!
+        (
+            ((?<=(?<S>\k<A>).*)|(?<=(?<T>\k<A>).*))??
+            (?<-A>.)
+        ){9}
+        (?<=(?=\k<S>)\k<T>.*)
+    )
+    (?<-A>){9}
+){27}
+
+#(?=
+#    (
+#        (?<=(?<S>\k<A>).*)
+#        (?<-A>)
+#        .
+#        #(?=(.(?<=(?!\k<A>)\k<S>.*)(?<-A>))+$))
+#        
+#    ){9}    #+$
+#){27} #{27}
+
 ";
 
         public static readonly Regex SudokuValidator = new Regex(SudokuValidatorPattern,
