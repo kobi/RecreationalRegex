@@ -15,6 +15,8 @@ namespace Kobi.RecreationalRegex.Rectangles
             
             AssertDistinctCapturesLengths(match, "Index");
             AssertDistinctCapturesLengths(match, "NextPos");
+
+            match.PrintAllCapturesToConsole(SmallRectangles.RectanglesRegex);
         }
 
         [TestCaseSource(typeof(Examples), nameof(Examples.ShouldNotMatch))]

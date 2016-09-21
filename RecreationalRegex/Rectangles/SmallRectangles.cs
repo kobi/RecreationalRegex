@@ -11,10 +11,13 @@ namespace Kobi.RecreationalRegex.Rectangles
     (?:
         (?<IndexLength>.)+              # Match n characters. We will use rectangle number n in position <Index>.
         (?<=\A(?=(?<Index>(?<-IndexLength>.)+)).*)    # Capture into <Index> the first n characters.
-        # Ensure <Index> is unique.
+        (?<=\A(?<CurrentIndex>\k<Index>).*)           # Copy Index into CurrentIndex
+        (?=.*\Z
+            (?<!(?<=\A\k<Index>)(?<=\A\k<CurrentIndex>).*(?<-Index>.)+) # ensure <Index> is unique.
+        )
         #(?<Rotate>.?)       # Optionally rotate rectangle number <Index>.<Length>.
     )
-){3} # +
+){4} # +
 ";
 
         public static readonly Regex RectanglesRegex = new Regex(RectanglesPattern, RegexOptions.Compiled |
