@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Kobi.RecreationalRegex.RegexUtilities
 {
@@ -72,5 +70,7 @@ namespace Kobi.RecreationalRegex.RegexUtilities
                 Console.WriteLine(match.Value);
             }
         }
+
+        public static List<Capture> GetCaptures(this Group group) => group.Captures.Cast<Capture>().ToList();
     }
 }

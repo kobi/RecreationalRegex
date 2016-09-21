@@ -111,6 +111,9 @@
     <Compile Include="PcreGrammar\PcreGrammar.cs" />
     <Compile Include="PcreGrammar\Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rectangles\Examples.cs" />
+    <Compile Include="Rectangles\SmallRectangles.cs" />
+    <Compile Include="Rectangles\SmallRectanglesTests.cs" />
     <Compile Include="RegexUtilities\MatchExtensions.cs" />
     <Compile Include="StackOverflowAnswers\Examples.cs" />
     <Compile Include="StackOverflowAnswers\StackOverflowAsnwers.cs" />
