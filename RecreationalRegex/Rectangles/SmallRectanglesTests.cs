@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Kobi.RecreationalRegex.RegexUtilities;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -10,6 +11,9 @@ namespace Kobi.RecreationalRegex.Rectangles
         [TestCaseSource(typeof(Examples), nameof(Examples.ShouldMatch))]
         public void ShouldMatch(string input)
         {
+            input = input.Replace("\r", "");
+            Console.WriteLine(input);
+
             var match = SmallRectangles.RectanglesRegex.Match(input);
             Assert.IsTrue(match.Success);
             
@@ -22,6 +26,8 @@ namespace Kobi.RecreationalRegex.Rectangles
         [TestCaseSource(typeof(Examples), nameof(Examples.ShouldNotMatch))]
         public void ShouldNotMatch(string input)
         {
+            input = input.Replace("\r", "");
+            Console.WriteLine(input);
             var match = SmallRectangles.RectanglesRegex.Match(input);
             Assert.IsFalse(match.Success);
         }

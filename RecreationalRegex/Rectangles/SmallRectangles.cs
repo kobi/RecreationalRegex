@@ -16,12 +16,18 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?=.*\Z                                       # Ensure <Index> is unique. We cannot use the same rectangle twice
             (?<!(?<=\A\k<Index>)(?<=\A\k<CurrentIndex>).*(?<-Index>.)+) 
         )
+        
         #Copy the shape of rectangle <Index> to the target area.
-        #Ensure no duplicates in solution - no two rectagles can overlap.
+        #Find rectangle number <Index>
+        (?<=(?=(?<IndexLength2>.)+?(?<=\A\k<Index>))\A.*)    # Populate <IndexLength> again.
+        (?<=(?=\s*(?<-IndexLength2>(?:\w+\n)+\n)+)\A.*) #Todo: capture position on the rectangle.
+        (?(IndexLength2)(?!)|)
+
+        #Ensure no duplicates in solution - no two rectangles can overlap.
         #(?<Rotate>.?)       # Optionally rotate rectangle number <Index>.<Length>. (this will be a simple alternation?)
     )
-){4} # +
-# continue until the full target area is covered. This is as simple as counting the characters and matches of the solution.
+)+
+# continue until the full target area is covered. This is as simple as counting the characters and matches of the solution or not matching more tildes.
 ";
 
         public static readonly Regex RectanglesRegex = new Regex(RectanglesPattern, RegexOptions.Compiled |
