@@ -16,12 +16,15 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?=.*\Z                                       # Ensure <Index> is unique. We cannot use the same rectangle twice
             (?<!(?<=\A\k<Index>)(?<=\A\k<CurrentIndex>).*(?<-Index>.)+) 
         )
+        (?(IndexLength)(?!)|)   # Not needed, just an assert.
         
         #Copy the shape of rectangle <Index> to the target area.
         #Find rectangle number <Index>
-        (?<=(?=(?<IndexLength2>.)+?(?<=\A\k<Index>))\A.*)    # Populate <IndexLength> again.
-        (?<=(?=\s*(?<-IndexLength2>(?:\w+\n)+\n)+)\A.*) #Todo: capture position on the rectangle.
-        (?(IndexLength2)(?!)|)
+        (?<=(?=.(?<IndexLength>.)*?(?<=\A\k<Index>))\A.*)    # Populate <IndexLength> again.
+             # ^-- we are skipping over one character. We want to reach rectangle number <IndexLength>,
+             #     so we're skiping over <IndexLength>-1 rectangles
+        (?<=(?=\s*(?<-IndexLength>(?:\w+\r?\n)+\r?\n)*(?<=(?<RectangleStart>.*))\w)\A.*) # Capture starting position of this rectangle.
+        (?(IndexLength)(?!)|)
 
         #Ensure no duplicates in solution - no two rectangles can overlap.
         #(?<Rotate>.?)       # Optionally rotate rectangle number <Index>.<Length>. (this will be a simple alternation?)
