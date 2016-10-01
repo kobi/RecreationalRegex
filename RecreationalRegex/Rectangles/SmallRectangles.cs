@@ -26,6 +26,11 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?<=(?=\s*(?<-IndexLength>(?:\w+\r?\n)+\r?\n)*(?<=(?<RectangleStart>.*))\w)\A.*) # Capture starting position of this rectangle.
         (?(IndexLength)(?!)|)
 
+        (?<=(?=\k<RectangleStart>   # Go to the position before the first character in the next rectangle.
+            (?=(?<Rectangle>\w)) # Capture the first character, just so we have it while printing the solution.
+
+        )\A.*)
+
         #Ensure no duplicates in solution - no two rectangles can overlap.
         #(?<Rotate>.?)       # Optionally rotate rectangle number <Index>.<Length>. (this will be a simple alternation?)
     )
