@@ -27,8 +27,18 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?(IndexLength)(?!)|)
 
         (?<=(?=\k<RectangleStart>   # Go to the position before the first character in the next rectangle.
-            (?=(?<Rectangle>\w)) # Capture the first character, just so we have it while printing the solution.
-
+            (?=(?<Rectangle>\w))    # Capture the first character, just so we have it while printing the solution.
+            (?<=(?=(?<Needle>\k<NextPos>(?<=(?<X>~*))))\A.*)     # Init <Needle> to point to the position of this rectangle in the target rectangle.
+                                                                 # Init <X> with the number of tildes to the left of the starting position.
+            (?:                     # Basically `(?:\w+\n)+\n` to match the whole rectangle.
+                (?:
+                    \w                                  # Match a character from the current rectangle.
+                    (?<=(?=(?<Needle>\k<Needle>~))\A.*) # Move needle to the right.
+                )+
+                \r?\n
+                (?<=(?=(?<Needle>\k<Needle>~*\r\n(?:\Z|\k<X>)))\A.*) # Move needle to the next line.
+            )+
+            \r?\n        # Match until we reach the end of this rectangle.
         )\A.*)
 
         #Ensure no duplicates in solution - no two rectangles can overlap.
