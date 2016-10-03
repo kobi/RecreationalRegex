@@ -38,21 +38,21 @@ namespace Kobi.RecreationalRegex.Rectangles
 
         (?<=(?=\k<RectangleStart>   # Go to the position before the first character in the current rectangle.
             (?<Rectangle>           # Capture this rectangle, just so we have it while printing the solution.
-                (?=(?<TempWidth>\w)+\r?\n)  # Take the width of the current rectangle 
+                (?=(?(TempRotate)(?<TempHeight>\w)|(?<TempWidth>\w))+\r?\n) 
                 (?:  
                     \w+
-                    (?<Height>\r?\n)        # Capture the height of the rectangle. A stack  of newlines.
+                    (?(TempRotate)(?<TempWidth>\r?\n)|(?<TempHeight>\r?\n))
                 )+
             )
             \r?\n        # Match until we reach the end of this rectangle.
         )\A.*)
 
-        (?=[^~]+(?<Width>(?<-TempWidth>~)+))(?(TempWidth)(?!)) # Capture as many tildes as the current width.
+        (?=[^~]+(?<Width>(?<-TempWidth>~)+))(?(TempWidth)(?!))          # Capture as many tildes as the current width.
+        (?=(?<-TempHeight>\S*(?<Height>\r?\n))+)(?(TempHeight)(?!))     # Capture newlines into stack <Height>.
         (?(TempRotate)(?<-TempRotate>)) # Clear <TempRotate>.
 
         # Ensure no duplicates in solution - no two rectangles can overlap.
         # Find the next <NextPost> - first next free postion.
-        # (?<Rotate>.?)       # Optionally rotate rectangle number <Index>.<Length>. (this will be a simple alternation?)
     )
 )+
 # continue until the full target area is covered. This is as simple as counting the characters and matches of the solution or not matching more tildes.
