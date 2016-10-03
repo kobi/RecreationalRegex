@@ -34,6 +34,7 @@ namespace Kobi.RecreationalRegex.Rectangles
                 (?:
                     \w                                  # Match a character from the current rectangle.
                     (?<=(?=(?<Needle>\k<Needle>~))\A.*) # Move needle to the right.
+                    # Add to the filled stack (which is similar to needle but not really.
                 )+
                 \r?\n
                 (?<=(?=(?<Needle>\k<Needle>~*\r\n(?:\Z|\k<X>)))\A.*) # Move needle to the next line.
@@ -41,8 +42,9 @@ namespace Kobi.RecreationalRegex.Rectangles
             \r?\n        # Match until we reach the end of this rectangle.
         )\A.*)
 
-        #Ensure no duplicates in solution - no two rectangles can overlap.
-        #(?<Rotate>.?)       # Optionally rotate rectangle number <Index>.<Length>. (this will be a simple alternation?)
+        # Ensure no duplicates in solution - no two rectangles can overlap.
+        # Find the next <NextPost> - first next free postion.
+        # (?<Rotate>.?)       # Optionally rotate rectangle number <Index>.<Length>. (this will be a simple alternation?)
     )
 )+
 # continue until the full target area is covered. This is as simple as counting the characters and matches of the solution or not matching more tildes.
