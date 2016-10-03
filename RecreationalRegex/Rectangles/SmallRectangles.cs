@@ -24,23 +24,31 @@ namespace Kobi.RecreationalRegex.Rectangles
              # ^-- we are skipping over one character. We want to reach rectangle number <IndexLength>,
              #     so we're skiping over <IndexLength>-1 rectangles
         (?<=(?=\s*(?<-IndexLength>(?:\w+\r?\n)+\r?\n)*(?<=(?<RectangleStart>.*))\w)\A.*) # Capture starting position of this rectangle.
-        (?(IndexLength)(?!)|)
+        (?(IndexLength)(?!))
+        (?:
+            (?<Rotate>)     # Capture 0 characters into <Rotate>. Indicates that we are not rotating this rectangle.
+            |
+            (?<Rotate>.)    # Capture 1 character into <Rotate>. Indicates that we are rotating this rectangle.
+            (?<TempRotate>) # Also mark <TempRotate>. This is a flag that is cleared for each rectangle. Allows conditional matching.
+        )
 
-        (?<=(?=\k<RectangleStart>   # Go to the position before the first character in the next rectangle.
-            (?=(?<Rectangle>\w))    # Capture the first character, just so we have it while printing the solution.
-            (?<=(?=(?<Needle>\k<NextPos>(?<=(?<X>~*))))\A.*)     # Init <Needle> to point to the position of this rectangle in the target rectangle.
-                                                                 # Init <X> with the number of tildes to the left of the starting position.
-            (?:                     # Basically `(?:\w+\n)+\n` to match the whole rectangle.
-                (?:
-                    \w                                  # Match a character from the current rectangle.
-                    (?<=(?=(?<Needle>\k<Needle>~))\A.*) # Move needle to the right.
-                    # Add to the filled stack (which is similar to needle but not really.
+        (?<=(?=\k<NextPos>(?<=(?<X>~*)))\A.*)   # Init <X> with the number of tildes to the left of the starting position.
+
+        # Basically `(?:\w+\n)+\n` to match the whole rectangle.
+
+        (?<=(?=\k<RectangleStart>   # Go to the position before the first character in the current rectangle.
+            (?<Rectangle>           # Capture this rectangle, just so we have it while printing the solution.
+                (?=(?<TempWidth>\w)+\r?\n)  # Take the width of the current rectangle 
+                (?:  
+                    \w+
+                    (?<Height>\r?\n)        # Capture the height of the rectangle. A stack  of newlines.
                 )+
-                \r?\n
-                (?<=(?=(?<Needle>\k<Needle>~*\r\n(?:\Z|\k<X>)))\A.*) # Move needle to the next line.
-            )+
+            )
             \r?\n        # Match until we reach the end of this rectangle.
         )\A.*)
+
+        (?=[^~]+(?<Width>(?<-TempWidth>~)+))(?(TempWidth)(?!)) # Capture as many tildes as the current width.
+        (?(TempRotate)(?<-TempRotate>)) # Clear <TempRotate>.
 
         # Ensure no duplicates in solution - no two rectangles can overlap.
         # Find the next <NextPost> - first next free postion.
