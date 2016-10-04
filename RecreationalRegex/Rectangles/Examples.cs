@@ -15,26 +15,6 @@
 ~~~
 ";
 
-        public static readonly string Simple3 = @"
-1111
-
-2222
-
-~~
-~~
-~~
-~~
-";
-
-        public static readonly string Simple4 = @"
-1111
-
-2222
-
-~~~~
-~~~~
-";
-
         public static readonly string SimpleRotate1 = @"
 11
 11
@@ -192,7 +172,7 @@ aaaa
 
         public static readonly string[] ShouldMatch =
         {
-            Simple1, Simple2, Simple3, Simple4, SimplePair1,
+            Simple1, Simple2, SimplePair1,
             SimplePairRotate1, SimpleRotate1, SimpleRotate2, SimpleRotate3, SimpleSkip1,
             //Medium1, Medium2, Medium3,
             //Big1,

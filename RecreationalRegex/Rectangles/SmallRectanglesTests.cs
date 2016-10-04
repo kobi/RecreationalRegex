@@ -22,6 +22,18 @@ namespace Kobi.RecreationalRegex.Rectangles
             match.PrintAllCapturesToConsole(SmallRectangles.RectanglesRegex);
         }
 
+        [Test]
+        [Combinatorial]
+        public void SimpleLineRotate(
+            [Values("1111", "1\n1\n1\n1")]string line1,
+            [Values("2222", "2\n2\n2\n2")]string line2,
+            [Values("~~~~\n~~~~", "~~\n~~\n~~\n~~")]string canvas
+            )
+        {
+            var wholeString = $"{line1}\n\n{line2}\n\n{canvas}\n\n";
+            ShouldMatch(wholeString);
+        }
+
         [TestCaseSource(typeof(Examples), nameof(Examples.ShouldNotMatch))]
         public void ShouldNotMatch(string input)
         {
