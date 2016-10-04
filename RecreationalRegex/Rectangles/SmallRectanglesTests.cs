@@ -30,7 +30,6 @@ namespace Kobi.RecreationalRegex.Rectangles
             Assert.IsFalse(match.Success);
         }
 
-
         private void AssertDistinctCapturesLengths(Match match, string group) =>
             CollectionAssert.AllItemsAreUnique(match.Groups[group].GetCaptures().Select(c => c.Value.Length),
                 $"group <{group}> lengths are not distinct");

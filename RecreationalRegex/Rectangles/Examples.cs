@@ -35,6 +35,16 @@
 ~~~
 ";
 
+        public static readonly string SimpleSkip1 = @"
+2
+2
+
+11
+11
+
+~~
+~~
+";
 
         public static readonly string SimplePairRotate1 = @"
 11
@@ -62,8 +72,68 @@
 ~~~~
 ~~~~
 ";
+        public static readonly string Big1 = @"
+1111
 
-        public static readonly string[] ShouldMatch = { Simple1, Simple2, SimplePair1, SimplePairRotate1, SimpleRotate1, Medium1, };
+222
+222
+
+333333
+
+444
+444
+
+5555
+
+666666
+
+7777
+7777
+7777
+
+6
+
+9
+
+88
+88
+
+aaaa
+aaaa
+
+~~~~~~~~~~
+~~~~~~~~~~
+~~~~~~~~~~
+~~~~~~~~~~
+~~~~~~~~~~
+";
+
+        public static readonly string Medium2 = @"
+1111
+
+2222
+
+3333
+
+4444
+
+555
+555
+555
+
+~~~~~
+~~~~~
+~~~~~
+~~~~~
+~~~~~
+";
+
+        public static readonly string[] ShouldMatch =
+        {
+            Simple1, Simple2, SimplePair1, SimplePairRotate1, SimpleRotate1, SimpleSkip1,
+            Medium1, Medium2,
+            //Big1,
+        };
 
 
         public static readonly string[] ShouldNotMatch = {
@@ -83,6 +153,25 @@
 ~~~
 ~~~
 ",
-        };
+//canvas is too big
+@"
+11
+11
+
+2222
+
+33
+
+4
+
+5
+
+~~~~
+~~~~
+~~~~
+~~~~
+",
+
+    };
     }
 }
