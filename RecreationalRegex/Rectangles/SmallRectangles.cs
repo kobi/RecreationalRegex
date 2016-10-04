@@ -51,6 +51,14 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?=(?<-TempHeight>\S*(?<Height>\r?\n))+)(?(TempHeight)(?!))     # Capture newlines into stack <Height>.
         (?(TempRotate)(?<-TempRotate>))                                 # Clear <TempRotate>.
 
+        (?<=(?=\k<NextPos>
+            (?:
+                (?:~)+?(?<=^\k<X>\k<Width>)
+                ~*(?<-Height>\k<Height>\k<X>|\r?\n)     # Match until the same position on the net line (or just the last line).
+            )+
+            (?(Height)(?!))
+        )\A.*)
+
         # Ensure no duplicates in solution - no two rectangles overlap.
         # Find the next <NextPost> - first next free postion.
     )
