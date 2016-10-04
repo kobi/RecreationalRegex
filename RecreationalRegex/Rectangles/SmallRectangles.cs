@@ -49,9 +49,9 @@ namespace Kobi.RecreationalRegex.Rectangles
 
         (?=[^~]+(?<Width>(?<-TempWidth>~)+))(?(TempWidth)(?!))          # Capture as many tildes as the current width.
         (?=(?<-TempHeight>\S*(?<Height>\r?\n))+)(?(TempHeight)(?!))     # Capture newlines into stack <Height>.
-        (?(TempRotate)(?<-TempRotate>)) # Clear <TempRotate>.
+        (?(TempRotate)(?<-TempRotate>))                                 # Clear <TempRotate>.
 
-        # Ensure no duplicates in solution - no two rectangles can overlap.
+        # Ensure no duplicates in solution - no two rectangles overlap.
         # Find the next <NextPost> - first next free postion.
     )
 )+
