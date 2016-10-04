@@ -67,10 +67,20 @@ namespace Kobi.RecreationalRegex.Rectangles
             (?(Height)(?!))
         )\A.*)
 
-        # Ensure no duplicates in solution - no two rectangles overlap.
-        # Find the next <NextPost> - first next free postion.
+        (?<=(?=.*?     # Find <NextPos> - first next free postion.
+            (?<=(?<NextPos>\A.*))
+            ~
+            (?<=(?<TempNextPos>\A.*))
+            (?=.*\Z
+                (?<!(?<=\A\k<Filled>)(?<=\A\k<TempNextPos>).*(?<-Filled>.)*) 
+            )
+            |
+            .*\r?\n\Z (?<Done>)
+        )\A.*)
+        
     )
 )+
+(?(Done)|(?!))
 # continue until the full target area is covered. This is as simple as counting the characters and matches of the solution or not matching more tildes.
 ";
 
