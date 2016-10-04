@@ -53,7 +53,15 @@ namespace Kobi.RecreationalRegex.Rectangles
 
         (?<=(?=\k<NextPos>
             (?:
-                (?:~)+?(?<=^\k<X>\k<Width>)
+                (?:                         # Match tildes
+                    ~
+                    (?<=(?<Filled>\A.*))               # Push the current position to <Filled>
+                    (?<=(?<TempCurrentFilled>\A.*))    # Also push the current position to <TempCurrentFilled>
+                    (?=.*\Z                            # Ensure <Filled> is unique. No overlap betweeb rectangles.
+                        (?<!(?<=\A\k<Filled>)(?<=\A\k<TempCurrentFilled>).*(?<-Filled>.)+) 
+                    )
+                )+?
+                (?<=^\k<X>\k<Width>)        # Match exactly <Width> tidles.
                 ~*(?<-Height>\k<Height>\k<X>|\r?\n)     # Match until the same position on the net line (or just the last line).
             )+
             (?(Height)(?!))
