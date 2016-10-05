@@ -27,7 +27,7 @@ namespace Kobi.RecreationalRegex.Rectangles
         public void SimpleLineRotate(
             [Values("1111", "1\n1\n1\n1")]string line1,
             [Values("2222", "2\n2\n2\n2")]string line2,
-            [Values("~~~~\n~~~~", "~~\n~~\n~~\n~~")]string canvas
+            [Values("~~~~\n~~~~", "~~\n~~\n~~\n~~", "~~~~~~~~", "~\n~\n~\n~\n~\n~\n~\n~")]string canvas
             )
         {
             var wholeString = BuildInput(line1, line2, canvas);
