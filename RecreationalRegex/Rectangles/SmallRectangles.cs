@@ -67,21 +67,20 @@ namespace Kobi.RecreationalRegex.Rectangles
             (?(Height)(?!))
         )\A.*)
 
-        (?<=(?=.*?     # Find <NextPos> - first next free position.
-            (?<=(?<NextPos>\A.*))
+        (?<=(?=.*?                      # Find <NextPos> - first next free position.
+            (?<=(?<NextPos>\A.*))       # <NextPos> is the position before the next free tilde.
             ~
-            (?<=(?<TempNextPos>\A.*))
+            (?<=(?<TempNextPos>\A.*))   # We compare it to <Filled>, which is the position including the tilde.
             (?=.*\Z
                 (?<!(?=\A\k<Filled>(?<=\A\k<TempNextPos>))\A.*(?<-Filled>.)*) 
             )
             |
-            .*\r?\n\Z (?<Done>)
+            .*\r?\n\Z (?<Done>)         # If we cannot find more an empty position it means we are done. Set the <Done> flag.
         )\A.*)
         
     )
 )+
 (?(Done)|(?!))
-# continue until the full target area is covered. This is as simple as counting the characters and matches of the solution or not matching more tildes.
 ";
 
         public static readonly Regex RectanglesRegex = new Regex(RectanglesPattern, RegexOptions.Compiled |
