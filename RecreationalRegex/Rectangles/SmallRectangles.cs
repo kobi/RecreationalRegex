@@ -14,7 +14,7 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?<=\A(?=(?<Index>(?<-IndexLength>.)+)).*)    # Capture into <Index> the first n characters.
         (?<=\A(?<CurrentIndex>\k<Index>).*)           # Copy Index into CurrentIndex
         (?=.*\Z                                       # Ensure <Index> is unique. We cannot use the same rectangle twice
-            (?<!(?<=\A\k<Index>)(?<=\A\k<CurrentIndex>).*(?<-Index>.)+) 
+            (?<!(?=\A\k<Index>(?<=\A\k<CurrentIndex>))\A.*(?<-Index>.)+) 
         )
         (?(IndexLength)(?!)|)   # Not needed, just an assert.
         
@@ -58,7 +58,7 @@ namespace Kobi.RecreationalRegex.Rectangles
                     (?<=(?<Filled>\A.*))               # Push the current position to <Filled>
                     (?<=(?<TempCurrentFilled>\A.*))    # Also push the current position to <TempCurrentFilled>
                     (?=.*\Z                            # Ensure <Filled> is unique. No overlap betweeb rectangles.
-                        (?<!(?<=\A\k<Filled>)(?<=\A\k<TempCurrentFilled>).*(?<-Filled>.)+) 
+                        (?<!(?=\A\k<Filled>(?<=\A\k<TempCurrentFilled>))\A.*(?<-Filled>.)+) 
                     )
                 )+?
                 (?<=^\k<X>\k<Width>)        # Match exactly <Width> tidles.
@@ -67,12 +67,12 @@ namespace Kobi.RecreationalRegex.Rectangles
             (?(Height)(?!))
         )\A.*)
 
-        (?<=(?=.*?     # Find <NextPos> - first next free postion.
+        (?<=(?=.*?     # Find <NextPos> - first next free position.
             (?<=(?<NextPos>\A.*))
             ~
             (?<=(?<TempNextPos>\A.*))
             (?=.*\Z
-                (?<!(?<=\A\k<Filled>)(?<=\A\k<TempNextPos>).*(?<-Filled>.)*) 
+                (?<!(?=\A\k<Filled>(?<=\A\k<TempNextPos>))\A.*(?<-Filled>.)*) 
             )
             |
             .*\r?\n\Z (?<Done>)

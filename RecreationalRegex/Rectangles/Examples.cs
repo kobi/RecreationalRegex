@@ -174,8 +174,8 @@ aaaa
         {
             Simple1, Simple2, SimplePair1,
             SimplePairRotate1, SimpleRotate1, SimpleRotate2, SimpleRotate3, SimpleSkip1,
-            //Medium1, Medium2, Medium3,
-            //Big1,
+            Medium1, Medium2, Medium3,
+            Big1,
         };
 
 
@@ -214,6 +214,16 @@ aaaa
 ~~~~
 ~~~~
 ",
+
+@"
+111
+
+222
+
+33
+
+~~~~
+"
 
     };
     }
