@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Kobi.RecreationalRegex.RegexUtilities;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Kobi.RecreationalRegex.Rectangles
@@ -19,6 +20,7 @@ namespace Kobi.RecreationalRegex.Rectangles
             AssertDistinctCapturesLengths(match, "Index");
             AssertDistinctCapturesLengths(match, "NextPos");
 
+            PrintSolution(match);
             match.PrintAllCapturesToConsole(SmallRectangles.RectanglesRegex);
         }
 
@@ -65,5 +67,24 @@ namespace Kobi.RecreationalRegex.Rectangles
         private void AssertDistinctCapturesLengths(Match match, string group) =>
             CollectionAssert.AllItemsAreUnique(match.Groups[group].GetCaptures().Select(c => c.Value.Length),
                 $"group <{group}> lengths are not distinct");
+
+        private void PrintSolution(Match match)
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("Found a solution!");
+            var usedRectanglesCount = match.Groups["Rectangle"].Captures.Count;
+            for (int i = 0; i < usedRectanglesCount; i++)
+            {
+                sb.Append(i + 1);
+                sb.AppendFormat(". Rectangle number {0}", match.Groups["Index"].Captures[i].Length);
+                if (match.Groups["Rotate"].Captures[i].Length == 1)
+                {
+                    sb.Append(", rotated");
+                }
+                sb.AppendLine(":");
+                sb.AppendLine(match.Groups["Rectangle"].Captures[i].Value).AppendLine();
+            }
+            Console.WriteLine(sb);
+        }
     }
 }
