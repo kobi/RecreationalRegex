@@ -26,8 +26,10 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?<=(?=\s*(?<-IndexLength>(?:\w+\r?\n)+\r?\n)*(?<=(?<RectangleStart>.*))\w)\A.*) # Capture starting position of this rectangle.
         (?(IndexLength)(?!))
         (?:
+            (?<Rotate>)     # Capture 0 characters into <Rotate>. Indicates that we are not rotating this rectangle.
             |
-            #(?<TempRotate>) # Also mark <TempRotate>. This is a flag that is cleared for each rectangle. Allows conditional matching.
+            (?<Rotate>.)    # Capture 1 character into <Rotate>. Indicates that we are rotating this rectangle.
+            (?<TempRotate>) # Also mark <TempRotate>. This is a flag that is cleared for each rectangle. Allows conditional matching.
         )
 
         (?<=(?=\k<NextPos>(?<=(?<X>~*)))\A.*)   # Init <X> with the number of tildes to the left of the starting position.
@@ -36,26 +38,18 @@ namespace Kobi.RecreationalRegex.Rectangles
 
         (?<=(?=\k<RectangleStart>   # Go to the position before the first character in the current rectangle.
             (?<Rectangle>           # Capture this rectangle, just so we have it while printing the solution.
-                (?=(?<TempWidth>\w)+\r?\n) 
+                (?=(?(TempRotate)(?<TempHeight>\w)|(?<TempWidth>\w))+\r?\n) 
                 (?:  
                     \w+
-                    (?<TempHeight>\r?\n)
+                    (?(TempRotate)(?<TempWidth>\r?\n)|(?<TempHeight>\r?\n))
                 )+
             )
             \r?\n        # Match until we reach the end of this rectangle.
         )\A.*)
 
-        (?: # Allow rotation. 
-                            # Do not rotate this rectangle.
-            (?<Rotate>)         # Capture 0 characters into <Rotate>. Indicates that we are not rotating this rectangle.
-            (?=[^~]+(?<Width>(?<-TempWidth>~)+))         # Capture as many tildes as the current width.
-            (?=(?<-TempHeight>\S*(?<Height>\r?\n))+)     # Capture newlines into stack <Height>.
-            |               # OR
-            (?<Rotate>.)        # Capture 1 character into <Rotate>. Indicates that we are rotating this rectangle.
-            (?=[^~]+(?<Width>(?<-TempHeight>~)+))        # Flip <TempWidth> and <TempHeight>.
-            (?=(?<-TempWidth>\S*(?<Height>\r?\n))+) 
-        )
-        (?(TempWidth)(?!))(?(TempHeight)(?!)) # Ensure we captured enough characters (rectangle isn't bigger than target).
+        (?=[^~]+(?<Width>(?<-TempWidth>~)+))(?(TempWidth)(?!))          # Capture as many tildes as the current width.
+        (?=(?<-TempHeight>\S*(?<Height>\r?\n))+)(?(TempHeight)(?!))     # Capture newlines into stack <Height>.
+        (?(TempRotate)(?<-TempRotate>))                                 # Clear <TempRotate>.
 
         (?<=(?=\k<NextPos>
             (?:
