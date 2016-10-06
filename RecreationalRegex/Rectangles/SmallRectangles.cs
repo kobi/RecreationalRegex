@@ -40,7 +40,7 @@ namespace Kobi.RecreationalRegex.Rectangles
             (?<Rectangle>           # Capture this rectangle, just so we have it while printing the solution.
                 (?=(?(TempRotate)(?<TempHeight>\w)|(?<TempWidth>\w))+\r?\n) 
                 (?:  
-                    \w+
+                    (?<Solution>\w)+
                     (?(TempRotate)(?<TempWidth>\r?\n)|(?<TempHeight>\r?\n))
                 )+
             )

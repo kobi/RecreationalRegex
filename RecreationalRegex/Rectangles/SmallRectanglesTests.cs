@@ -20,6 +20,7 @@ namespace Kobi.RecreationalRegex.Rectangles
             AssertDistinctCapturesLengths(match, "Index");
             AssertDistinctCapturesLengths(match, "NextPos");
 
+            PrintCanvas(match);
             PrintSolution(match);
             match.PrintAllCapturesToConsole(SmallRectangles.RectanglesRegex);
         }
@@ -85,6 +86,21 @@ namespace Kobi.RecreationalRegex.Rectangles
                 sb.AppendLine(match.Groups["Rectangle"].Captures[i].Value).AppendLine();
             }
             Console.WriteLine(sb);
+        }
+
+        private void PrintCanvas(Match match)
+        {
+            //this ugliness is just to visualize the solution.
+            Console.WriteLine("Visualized:");
+            Console.WriteLine();
+            var solutionChars = match.Groups["Solution"].GetCaptures();
+            var canvas = Regex.Match(match.Result("$_"), @"~[~\s]+\Z").Value;
+            var ordered = match.Groups["Filled"].GetCaptures()
+                .Zip(solutionChars, (filled, c) => new {Char = c.Value, Order = filled.Length})
+                .OrderBy(c => c.Order).Select(c => c.Char).ToArray();
+            int index = 0;
+            var solution = Regex.Replace(canvas, @"~", m => ordered[index++]);
+            Console.WriteLine(solution);
         }
     }
 }
