@@ -47,7 +47,7 @@ namespace Kobi.RecreationalRegex.Rectangles
             \r?\n        # Match until we reach the end of this rectangle.
         )\A.*)
 
-        (?=[^~]+(?<Width>(?<-TempWidth>~)+))(?(TempWidth)(?!))          # Capture as many tildes as the current width.
+        (?<=(?=[^~]+(?<Width>(?<-TempWidth>~)+))\A.*)(?(TempWidth)(?!)) # Capture as many tildes as the current width.
         (?=(?<-TempHeight>\S*(?<Height>\r?\n))+)(?(TempHeight)(?!))     # Capture newlines into stack <Height>.
         (?(TempRotate)(?<-TempRotate>))                                 # Clear <TempRotate>.
 
