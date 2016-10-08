@@ -50,6 +50,7 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?=(?<-TempHeight>\S*(?<Height>\r?\n))+)(?(TempHeight)(?!))     # Capture newlines into stack <Height>.
         (?(TempRotate)(?<-TempRotate>))                                 # Clear <TempRotate>.
 
+        # Try to fit the rectangle into empty positions in the target rectangle.
         (?<=(?=\k<NextPos>
             (?:
                 (?:                         # Match tildes
@@ -66,7 +67,8 @@ namespace Kobi.RecreationalRegex.Rectangles
             (?(Height)(?!))
         )\A.*)
 
-        (?<=(?=.*?                      # Find <NextPos> - first next free position.
+        # Find the next free position - <NextPos>.
+        (?<=(?=.*?                      
             (?<=(?<NextPos>\A.*))       # <NextPos> is the position before the next free tilde.
             ~
             (?<=(?<TempNextPos>\A.*))   # We compare it to <Filled>, which is the position including the tilde.
