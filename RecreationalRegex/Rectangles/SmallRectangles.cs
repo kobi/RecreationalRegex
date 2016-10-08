@@ -57,7 +57,7 @@ namespace Kobi.RecreationalRegex.Rectangles
                     ~
                     (?<=(?<Filled>\A.*))               # Push the current position to <Filled>
                     (?<=(?<TempCurrentFilled>\A.*))    # Also push the current position to <TempCurrentFilled>
-                    (?=.*\Z                            # Ensure <Filled> is unique. No overlap betweeb rectangles.
+                    (?=.*\Z                            # Ensure <Filled> is unique. No overlap between rectangles.
                         (?<!(?=\A\k<Filled>(?<=\A\k<TempCurrentFilled>))\A.*(?<-Filled>.)+) 
                     )
                 )+?
