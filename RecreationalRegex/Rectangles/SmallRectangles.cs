@@ -35,7 +35,6 @@ namespace Kobi.RecreationalRegex.Rectangles
         (?<=(?=\k<NextPos>(?<=(?<X>~*)))\A.*)   # Init <X> with the number of tildes to the left of the starting position.
 
         # Basically `(?:\w+\n)+\n` to match the whole rectangle.
-
         (?<=(?=\k<RectangleStart>   # Go to the position before the first character in the current rectangle.
             (?<Rectangle>           # Capture this rectangle, just so we have it while printing the solution.
                 (?=(?(TempRotate)(?<TempHeight>\w)|(?<TempWidth>\w))+\r?\n) 
@@ -61,7 +60,7 @@ namespace Kobi.RecreationalRegex.Rectangles
                         (?<!(?=\A\k<Filled>(?<=\A\k<TempCurrentFilled>))\A.*(?<-Filled>.)+) 
                     )
                 )+?
-                (?<=^\k<X>\k<Width>)        # Match exactly <Width> tidles.
+                (?<=^\k<X>\k<Width>)        # Match exactly <Width> tildes.
                 ~*(?<-Height>\k<Height>\k<X>|\r?\n)     # Match until the same position on the net line (or just the last line).
             )+
             (?(Height)(?!))
