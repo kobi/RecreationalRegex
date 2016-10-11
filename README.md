@@ -1,8 +1,8 @@
-This solution contains many .Net regular expressions.
+This repository contains many .Net regular expressions.
 
 ## How to use?
 The solution contains NUnit test cases for all regular expressions - you should be able to run easily them in Visual Studio.
-Many tests write output to console - usually Matches or Captures. In NUnit, you can click on the "Text Output" tab to view this output.
+Many tests write output to console - usually Matches and Captures.
 
 ## .Net Regular Expressions:
 
