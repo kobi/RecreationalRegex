@@ -1,9 +1,10 @@
-##Description
-The solution contains NUnit test cases for all regular expressions.  
-The repository contains a `.csproj.user`, and is set up so you can just click <kbd>F5</kbd> and run all tests from Visual Studio.  
+This solution contains many .Net regular expressions.
+
+## How to use?
+The solution contains NUnit test cases for all regular expressions - you should be able to run easily them in Visual Studio.
 Many tests write output to console - usually Matches or Captures. In NUnit, you can click on the "Text Output" tab to view this output.
 
-##.Net Regular Expressions:
+## .Net Regular Expressions:
 
 ### Stack Overflow
 
