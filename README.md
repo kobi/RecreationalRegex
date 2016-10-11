@@ -17,6 +17,8 @@ Test cases and code used to create the pattern for Stack Overflow question: [Con
 
 [Filling a large rectangle with smaller rectangles using regular expressions](https://kobikobi.wordpress.com/2016/10/11/filling-a-large-rectangle-with-smaller-rectangles-using-regular-expressions/)
 
+<!--
 <img src="https://kobikobi.files.wordpress.com/2016/10/rectangles_four.png" alt="" />
 
 ![Rectangles](https://kobikobi.files.wordpress.com/2016/10/rectangles_four.png)
+-->
