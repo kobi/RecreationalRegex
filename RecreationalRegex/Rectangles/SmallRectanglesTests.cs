@@ -93,7 +93,7 @@ namespace Kobi.RecreationalRegex.Rectangles
             //this ugliness is just to visualize the solution.
             Console.WriteLine("Visualized:");
             Console.WriteLine();
-            var solutionChars = match.Groups["Solution"].GetCaptures();
+            var solutionChars = match.Groups["SolutionChar"].GetCaptures();
             var canvas = Regex.Match(match.Result("$_"), @"~[~\s]+\Z").Value;
             var ordered = match.Groups["Filled"].GetCaptures()
                 .Zip(solutionChars, (filled, c) => new {Char = c.Value, Order = filled.Length})
