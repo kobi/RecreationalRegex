@@ -1,5 +1,3 @@
-This repository contains many .Net regular expressions.
-
 ## How to use?
 The solution contains NUnit test cases for all regular expressions - you should be able to run easily them in Visual Studio.
 Many tests write output to console - usually Matches and Captures.
