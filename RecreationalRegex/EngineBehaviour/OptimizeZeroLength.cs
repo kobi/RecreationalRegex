@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kobi.RecreationalRegex.EngineBehaviour
+﻿namespace Kobi.RecreationalRegex.EngineBehaviour
 {
     /// <summary>
     /// I used these to try to get the engine to empty a stack, for the numeric patterns. Couldn't get it to work. There's a similar problem in the maze solver.

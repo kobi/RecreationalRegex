@@ -1,11 +1,4 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kobi.RecreationalRegex.Numeric
+﻿namespace Kobi.RecreationalRegex.Numeric
 {
     //[TestFixture]
     //public class IrreducibleFractionsTests
