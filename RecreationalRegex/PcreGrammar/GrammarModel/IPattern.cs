@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kobi.RecreationalRegex.PcreGrammar.GrammarModel
+﻿namespace Kobi.RecreationalRegex.PcreGrammar.GrammarModel
 {
     public interface IPattern
     {
