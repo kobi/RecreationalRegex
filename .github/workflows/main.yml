@@ -3,17 +3,10 @@ on: [push]
 jobs:
   regex_test:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Test
     steps:
-    # To use this repository's private action, you must check out the repository
-    - name: Checkout
-      uses: actions/checkout@v1
-    #- uses: ./ # Uses an action in the root directory
-    - name: Build and test step
+    - name: Get dotnet core
       id: hello
       uses: actions/setup-dotnet@v1
-    #  with:
-    #    who-to-greet: 'Mona the Octocat'
-    # Use the output from the `hello` step
-    - name: Run tests
+    - name: Run tests for all regular expressions
       run: dotnet test
