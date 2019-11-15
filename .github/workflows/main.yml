@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Test
     steps:
+    - name: Checkout
+      uses: actions/checkout@v1
     - name: Get dotnet core
       id: hello
       uses: actions/setup-dotnet@v1
