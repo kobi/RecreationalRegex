@@ -7,8 +7,19 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Get dotnet core
-      id: hello
+    - name: Install dotnet Core
       uses: actions/setup-dotnet@v1
     - name: Run tests for all regular expressions
       run: dotnet test
+  test_golang:
+    runs-on: ubuntu-latest
+    name: Test Go
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Install Go
+      uses: actions/setup-go@v1
+    - name: install go liberary
+      run: go get github.com/dlclark/regexp2/...
+    - name: Run tests for all regular expressions
+      run: go run Go/RegexMaze.go
