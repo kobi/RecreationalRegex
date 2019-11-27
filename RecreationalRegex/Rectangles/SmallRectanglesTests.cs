@@ -91,8 +91,6 @@ namespace Kobi.RecreationalRegex.Rectangles
         private void PrintCanvas(Match match)
         {
             //this ugliness is just to visualize the solution.
-            TestContext.Progress.WriteLine("Visualized:");
-            TestContext.Progress.WriteLine();
             var solutionChars = match.Groups["SolutionChar"].GetCaptures();
             var canvas = Regex.Match(match.Result("$_"), @"~[~\s]+\Z").Value;
             var ordered = match.Groups["Filled"].GetCaptures()
@@ -100,7 +98,7 @@ namespace Kobi.RecreationalRegex.Rectangles
                 .OrderBy(c => c.Order).Select(c => c.Char).ToArray();
             int index = 0;
             var solution = Regex.Replace(canvas, @"~", m => ordered[index++]);
-            TestContext.Progress.WriteLine(solution);
+            TestContext.Progress.WriteLine("Visualized:\n{0}", solution);
         }
     }
 }

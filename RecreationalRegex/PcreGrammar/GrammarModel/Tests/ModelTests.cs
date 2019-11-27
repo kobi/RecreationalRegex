@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Kobi.RecreationalRegex.PcreGrammar.GrammarModel.Tests
@@ -11,41 +12,32 @@ namespace Kobi.RecreationalRegex.PcreGrammar.GrammarModel.Tests
         public void AnBnToString()
         {
             var states = ExampleLanguages.AnBn();
-            foreach (var state in states)
-            {
-                TestContext.Progress.WriteLine(state);
-            }
+            Print(states);
         }
         
         [Test]
         public void AStarToString()
         {
             var states = ExampleLanguages.AStar();
-            foreach (var state in states)
-            {
-                TestContext.Progress.WriteLine(state);
-            }
+            Print(states);
         }
 
         [Test]
         public void PcreGrammarToString()
         {
             var states = PcreGrammar.NumberedStatesPcreGrammarStates();
-            foreach (var state in states)
-            {
-                TestContext.Progress.WriteLine(state);
-            }
+            Print(states);
         }
 
         [Test]
         public void PcreGrammarWithCapturesToString()
         {
             var states = PcreGrammar.NumberedStatesPcreGrammarWithCapturesStates();
-            foreach (var state in states)
-            {
-                TestContext.Progress.WriteLine(state);
-            }
+            Print(states);
         }
+
+        private void Print(IEnumerable<State> states) => 
+            TestContext.Progress.WriteLine(String.Join("\n", states));
     }
 
     [TestFixture]
