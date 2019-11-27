@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using NUnit.Framework;
 
 namespace Kobi.RecreationalRegex.RegexUtilities
 {
@@ -11,14 +12,14 @@ namespace Kobi.RecreationalRegex.RegexUtilities
         {
             if (!match.Success)
             {
-                Console.WriteLine("\t\tNo Match.");
+                TestContext.WriteLine("\t\tNo Match.");
                 return;
             }
             var groupNames = regex.GetGroupNames();
             foreach (var groupName in groupNames)
             {
                 var g = match.Groups[groupName];
-                Console.WriteLine("\tGroup {0}",groupName);
+                TestContext.WriteLine("\tGroup {0}",groupName);
                 g.PrintCaptures();
             }
         }
@@ -27,32 +28,31 @@ namespace Kobi.RecreationalRegex.RegexUtilities
         {
             if (!group.Success)
             {
-                Console.WriteLine("\t\tNo Captures.");
+                TestContext.WriteLine("\t\tNo Captures.");
                 return;
             }
             foreach (var capture in group.Captures.Cast<Capture>().OrderBy(c => c.Index))
             {
-                Console.WriteLine("\t\t({1}-{2}) {0}", capture.Value, capture.Index, capture.Index + capture.Length - 1);
-
+                TestContext.WriteLine("\t\t({1}-{2}) {0}", capture.Value, capture.Index, capture.Index + capture.Length - 1);
             }
         }
         /*
         public static void Print(this MatchCollection matchCollection)
         {
-            Console.ResetColor();
-            Console.WriteLine("Found {0} matches.", matchCollection.Count);
+            TestContext.Progress.ResetColor();
+            TestContext.Progress.WriteLine("Found {0} matches.", matchCollection.Count);
             foreach (Match match in matchCollection)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(match.Value);
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Captured Groups:");
+                TestContext.Progress.ForegroundColor = ConsoleColor.Yellow;
+                TestContext.Progress.WriteLine(match.Value);
+                TestContext.Progress.ForegroundColor = ConsoleColor.Gray;
+                TestContext.Progress.WriteLine("Captured Groups:");
                 foreach (Group group in match.Groups)
                 {
-                    Console.WriteLine("Length:{0}\tText:{1}\tCaptures:{2}", group.Length, group, group.Captures.Count);
+                    TestContext.Progress.WriteLine("Length:{0}\tText:{1}\tCaptures:{2}", group.Length, group, group.Captures.Count);
                 }
 
-                Console.WriteLine();
+                TestContext.Progress.WriteLine();
             }
         }
         */
@@ -61,13 +61,13 @@ namespace Kobi.RecreationalRegex.RegexUtilities
         {
             if (matchCollection.Count == 0)
             {
-                Console.WriteLine("No matches.");
+                TestContext.Progress.WriteLine("No matches.");
                 return;
             }
 
             foreach (Match match in matchCollection)
             {
-                Console.WriteLine(match.Value);
+                TestContext.Progress.WriteLine(match.Value);
             }
         }
 

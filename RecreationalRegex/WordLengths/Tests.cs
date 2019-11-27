@@ -15,9 +15,7 @@ namespace Kobi.RecreationalRegex.WordLengths
         [TestCase(Examples.LongText, TestName = "LongText")]
         public void Matches(string text)
         {
-            Console.WriteLine("Input is:");
-            Console.WriteLine(text);
-            Console.WriteLine();
+            TestContext.Progress.WriteLine("Input is:\n" + text);
 
             var r = Regex;
             var matches = r.Matches(text);
