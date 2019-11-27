@@ -12,7 +12,7 @@ namespace Kobi.RecreationalRegex.Rectangles
         [TestCaseSource(typeof(Examples), nameof(Examples.ShouldMatch))]
         public void ShouldMatch(string input)
         {
-            Console.WriteLine(input);
+            TestContext.Progress.WriteLine(input);
 
             var match = SmallRectangles.RectanglesRegex.Match(input);
             Assert.IsTrue(match.Success);
@@ -45,7 +45,7 @@ namespace Kobi.RecreationalRegex.Rectangles
         [TestCaseSource(typeof(Examples), nameof(Examples.ShouldNotMatch))]
         public void ShouldNotMatch(string input)
         {
-            Console.WriteLine(input);
+            TestContext.Progress.WriteLine(input);
             var match = SmallRectangles.RectanglesRegex.Match(input);
             Assert.IsFalse(match.Success);
         }
@@ -85,14 +85,12 @@ namespace Kobi.RecreationalRegex.Rectangles
                 sb.AppendLine(":");
                 sb.AppendLine(match.Groups["Rectangle"].Captures[i].Value).AppendLine();
             }
-            Console.WriteLine(sb);
+            TestContext.Progress.WriteLine(sb);
         }
 
         private void PrintCanvas(Match match)
         {
             //this ugliness is just to visualize the solution.
-            Console.WriteLine("Visualized:");
-            Console.WriteLine();
             var solutionChars = match.Groups["SolutionChar"].GetCaptures();
             var canvas = Regex.Match(match.Result("$_"), @"~[~\s]+\Z").Value;
             var ordered = match.Groups["Filled"].GetCaptures()
@@ -100,7 +98,7 @@ namespace Kobi.RecreationalRegex.Rectangles
                 .OrderBy(c => c.Order).Select(c => c.Char).ToArray();
             int index = 0;
             var solution = Regex.Replace(canvas, @"~", m => ordered[index++]);
-            Console.WriteLine(solution);
+            TestContext.Progress.WriteLine("Visualized:\n{0}", solution);
         }
     }
 }

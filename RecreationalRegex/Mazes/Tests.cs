@@ -25,12 +25,11 @@ namespace Kobi.RecreationalRegex.Mazes
         [TestCase(ExampleMazes.Small, TestName = "Medium")]
         public void ShouldMatch(string maze)
         {
-            Console.WriteLine(maze);
+            TestContext.WriteLine(maze);
 
             var match = MazeSolver.Match(maze);
 
-            Console.WriteLine("Solution:");
-            Console.WriteLine(match.ShowPath());
+            TestContext.WriteLine("Solution:\n" + match.ShowPath());
         }
 
         [TestCase(ExampleMazes.SmallNoSolution, TestName = "Medium - No Solution")]
@@ -38,7 +37,7 @@ namespace Kobi.RecreationalRegex.Mazes
         [TestCase(ExampleMazes.BigBad2, TestName = "Big2 - No Solution")]
         public void ShouldNotMatch(string maze)
         {
-            Console.WriteLine(maze);
+            TestContext.Progress.WriteLine(maze);
             var match = MazeSolver.Match(maze);
             Assert.IsFalse(match.Success);
         }

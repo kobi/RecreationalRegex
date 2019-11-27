@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Kobi.RecreationalRegex.PcreGrammar.GrammarModel.Tests
@@ -11,41 +12,32 @@ namespace Kobi.RecreationalRegex.PcreGrammar.GrammarModel.Tests
         public void AnBnToString()
         {
             var states = ExampleLanguages.AnBn();
-            foreach (var state in states)
-            {
-                Console.WriteLine(state);
-            }
+            Print(states);
         }
         
         [Test]
         public void AStarToString()
         {
             var states = ExampleLanguages.AStar();
-            foreach (var state in states)
-            {
-                Console.WriteLine(state);
-            }
+            Print(states);
         }
 
         [Test]
         public void PcreGrammarToString()
         {
             var states = PcreGrammar.NumberedStatesPcreGrammarStates();
-            foreach (var state in states)
-            {
-                Console.WriteLine(state);
-            }
+            Print(states);
         }
 
         [Test]
         public void PcreGrammarWithCapturesToString()
         {
             var states = PcreGrammar.NumberedStatesPcreGrammarWithCapturesStates();
-            foreach (var state in states)
-            {
-                Console.WriteLine(state);
-            }
+            Print(states);
         }
+
+        private void Print(IEnumerable<State> states) => 
+            TestContext.Progress.WriteLine(String.Join("\n", states));
     }
 
     [TestFixture]
@@ -55,28 +47,28 @@ namespace Kobi.RecreationalRegex.PcreGrammar.GrammarModel.Tests
         public void AnBnPattern()
         {
             var anbn = ExampleLanguages.AnBn().ToRegex();
-            Console.WriteLine("Pattern = \n{0}", anbn);
+            TestContext.Progress.WriteLine("Pattern = \n{0}", anbn);
         }
 
         [Test]
         public void AStarPattern()
         {
             var anbn = ExampleLanguages.AStar().ToRegex();
-            Console.WriteLine("Pattern = \n{0}", anbn);
+            TestContext.Progress.WriteLine("Pattern = \n{0}", anbn);
         }
 
         [Test]
         public void PcreGrammarPattern()
         {
             var p = PcreGrammar.NumberedStatesPcreGrammarRegex();
-            Console.WriteLine("Pattern = \n{0}", p);
+            TestContext.Progress.WriteLine("Pattern = \n{0}", p);
         }
 
         [Test]
         public void PcreGrammarWithCapturesPattern()
         {
             var p = PcreGrammar.NumberedStatesPcreGrammarWithCapturesRegex();
-            Console.WriteLine("Pattern = \n{0}", p);
+            TestContext.Progress.WriteLine("Pattern = \n{0}", p);
         }
     }
 

@@ -16,9 +16,7 @@ namespace Kobi.RecreationalRegex.StackOverflowAnswers
         {
             var acronyms = StackOverflowAsnwers.FindAcronymsRegex;
             var text = Examples.Acronyms;
-            Console.WriteLine("Input text:");
-            Console.WriteLine(text);
-            Console.WriteLine();
+            TestContext.Progress.WriteLine("Input text:\n" + text);
 
             var matches = acronyms.Matches(text);
             CollectionAssert.IsNotEmpty(matches);
