@@ -28,7 +28,7 @@ namespace Kobi.RecreationalRegex.StackOverflowAnswers
 
         /// <summary>
         /// SO 5073826
-        /// http://stackoverflow.com/questions/5073826
+        /// https://stackoverflow.com/questions/5073826
         /// </summary>
         public static readonly string FindRegexComments = @"
 \A
@@ -52,7 +52,7 @@ namespace Kobi.RecreationalRegex.StackOverflowAnswers
     public static readonly Regex FindRegexCommentsRegex = new Regex(FindRegexComments, RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
 
         /// <summary>
-        /// http://stackoverflow.com/questions/5153980
+        /// https://stackoverflow.com/questions/5153980
         /// </summary>
         public static readonly string FindAsterisksNotInBracketsPattern = @"
 \\. # Skip an escaped character.
@@ -67,7 +67,7 @@ namespace Kobi.RecreationalRegex.StackOverflowAnswers
         public static readonly Regex FindAsterisksNotInBracketsRegex = new Regex(FindAsterisksNotInBracketsPattern, RegexOptions.IgnorePatternWhitespace);
 
         /// <summary>
-        /// http://stackoverflow.com/questions/5153980
+        /// https://stackoverflow.com/questions/5153980
         /// </summary>
         public static readonly string FindAsterisksNotInBracketsNoEscape = @"
 \[          # Skip a character class
@@ -78,9 +78,9 @@ namespace Kobi.RecreationalRegex.StackOverflowAnswers
 ";
 
         /// <summary>
-        /// http://stackoverflow.com/questions/5341369/regex-for-at-least-two-unique-charactors
+        /// https://stackoverflow.com/questions/5341369/regex-for-at-least-two-unique-charactors
         /// </summary>
-        /// <remarks>Actually, the OP had a more elegant solution: http://stackoverflow.com/a/5355752/7586 </remarks>
+        /// <remarks>Actually, the OP had a more elegant solution: https://stackoverflow.com/a/5355752/7586 </remarks>
         public static readonly string AtLeastTwoSingleAppearanceCharaters = @"
 ^
 (?>                 # Possesive group - do not backtrack!
@@ -99,7 +99,7 @@ $
 
         /// <summary>
         /// Find constructs like "Tel-Aviv (TA)"
-        /// http://stackoverflow.com/questions/4593376/regular-expression-for-acronyms
+        /// https://stackoverflow.com/questions/4593376/regular-expression-for-acronyms
         /// </summary>
         public static readonly string FindAcronymsPattern = @"
 \b((?<Acronym>\w)\w*\W+)+

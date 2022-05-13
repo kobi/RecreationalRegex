@@ -43,7 +43,7 @@ namespace Kobi.RecreationalRegex.WordLengths
         public static readonly Regex LongerWordLengthsRegex = new Regex(LongerWordLengthsPattern, RegexOptions.IgnorePatternWhitespace);
 
         /// <summary>
-        /// Last pattern from http://blog.stevenlevithan.com/archives/balancing-groups
+        /// Last pattern from https://blog.stevenlevithan.com/archives/balancing-groups
         /// </summary>
         public static readonly string FunWithIncreasingLength = @"
 (?:

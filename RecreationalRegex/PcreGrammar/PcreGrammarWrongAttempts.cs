@@ -6,7 +6,7 @@ namespace Kobi.RecreationalRegex.PcreGrammar
     public class PcreGrammarWrongAttempts
     {
         public static readonly string FirstAttemptPattern = @"
-# regex for http://stackoverflow.com/questions/3349999/net-regex-recursive-patterns
+# regex for https://stackoverflow.com/questions/3349999/net-regex-recursive-patterns
  
 ^(?:
     (\w(?<Q>)) # Q1

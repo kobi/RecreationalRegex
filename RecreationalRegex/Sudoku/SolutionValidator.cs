@@ -3,7 +3,7 @@
 namespace Kobi.RecreationalRegex.Sudoku
 {
     //A giant negative lookahead is a better approach here. 
-    //There are *better* solutions on http://codegolf.stackexchange.com/q/78210/7762
+    //There are better solutions on https://codegolf.stackexchange.com/q/78210/7762
 
     public class SolutionValidator
     {

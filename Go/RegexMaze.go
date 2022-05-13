@@ -62,7 +62,7 @@ func solveMaze(maze string) {
         (?<Up>)
         (?<=
             \A(?=\k<Pos>
-                (?<=        # Lookbehind - read pattern from bottom to top: http://stackoverflow.com/q/13389560/7586
+                (?<=        # Lookbehind - read pattern from bottom to top: https://stackoverflow.com/q/13389560/7586
                     (?-s:                   # Dot does not match new lines
                         (?=
                             (?>(?<-X>.)*(?(X)(?!)))  # Find same position as lower character
@@ -126,7 +126,7 @@ func testMazes() {
 █ █ █ █ ██
 █   █ █ E█
 ██████████`,
-		//Source: http://rosettacode.org/wiki/Maze_generation#F.23
+		//Source: https://rosettacode.org/wiki/Maze_generation#F.23
 		`
 +-+-+-+-+-+-+-+-+-+-+
 S         |     |   |
@@ -149,7 +149,7 @@ S         |     |   |
 + +-+ +-+ +-+-+ +-+-+
 |       |           E
 +-+-+-+-+-+-+-+-+-+-+`,
-		//Source: http://rosettacode.org/wiki/Maze_generation#Ruby
+		//Source: https://rosettacode.org/wiki/Maze_generation#Ruby
 		`
 +-+-+-+-+-+-+-+-+-+-+-+-+-+S+-+-+-+-+-+-+
 |         | |           | |   |     |   |

@@ -51,7 +51,7 @@ namespace Kobi.RecreationalRegex.Mazes
         (?<Up>)
         (?<=
             \A(?=\k<Pos>
-                (?<=        # Lookbehind - read pattern from bottom to top: http://stackoverflow.com/q/13389560/7586
+                (?<=        # Lookbehind - read pattern from bottom to top: https://stackoverflow.com/q/13389560/7586
                     (?-s:                   # Dot does not match new lines
                         (?=
                             (?>(?<-X>.)*(?(X)(?!)))  # Find same position as lower character

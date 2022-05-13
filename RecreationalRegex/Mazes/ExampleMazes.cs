@@ -45,7 +45,7 @@
 ";
 
         /// <summary>
-        /// Source: http://rosettacode.org/wiki/Maze_generation#F.23
+        /// Source: https://rosettacode.org/wiki/Maze_generation#F.23
         /// </summary>
         public const string BigGood = @"
 +-+-+-+-+-+-+-+-+-+-+
@@ -96,7 +96,7 @@ S         |     |   |
 +-+-+-+-+-+-+-+-+-+-+";
 
         /// <summary>
-        /// Source: http://rosettacode.org/wiki/Maze_generation#Ruby
+        /// Source: https://rosettacode.org/wiki/Maze_generation#Ruby
         /// </summary>
         public const string BigGood2 = @"
 +-+-+-+-+-+-+-+-+-+-+-+-+-+S+-+-+-+-+-+-+
@@ -122,7 +122,7 @@ S         |     |   |
 +-+-+-+-+-+-+-+-+-+-+E+-+-+-+-+-+-+-+-+-+";
 
         /// <summary>
-        /// Source: http://rosettacode.org/wiki/Maze_generation#Ruby
+        /// Source: https://rosettacode.org/wiki/Maze_generation#Ruby
         /// </summary>
         public const string BigBad2 = @"
 +-+-+-+-+-+-+-+-+-+-+-+-+-+S+-+-+-+-+-+-+
