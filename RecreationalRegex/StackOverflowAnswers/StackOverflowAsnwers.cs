@@ -49,6 +49,8 @@ namespace Kobi.RecreationalRegex.StackOverflowAnswers
 )*
 \z";
 
+    public static readonly Regex FindRegexCommentsRegex = new Regex(FindRegexComments, RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
+
         /// <summary>
         /// http://stackoverflow.com/questions/5153980
         /// </summary>

@@ -32,5 +32,16 @@ namespace Kobi.RecreationalRegex.StackOverflowAnswers
             string actual = regex.Replace(input, match => match.Groups["Asterisk"].Success ? "%" : match.Value);
             Assert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void FindRegexCommentsInSelf()
+        {
+            var commentFindingRegex = StackOverflowAsnwers.FindRegexCommentsRegex;
+            var match = commentFindingRegex.Match(StackOverflowAsnwers.FindRegexComments);
+            Assert.IsTrue(match.Success);
+            var regexComments = match.Groups["Comment"];
+            CollectionAssert.IsNotEmpty(regexComments.Captures);
+            match.PrintAllCapturesToConsole(commentFindingRegex);
+        }
     }
 }
