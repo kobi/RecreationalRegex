@@ -14,7 +14,7 @@ Blog post: [Solving mazes using regular expressions](https://kobikobi.wordpress.
 
 ## Implement PCRE recursive grammar in .NET regex balancing groups
 Source: [`PcreGrammar.cs`](RecreationalRegex/PcreGrammar/PcreGrammar.cs)  
-For a Stack Overflow answer - which took me **3 years** to figure out.  I ended up writing code to generate a regex from an intemidiate stack-based grammar. fun stuff: [Converting PCRE recursive regex pattern to .NET balancing groups definition](https://stackoverflow.com/a/20644634/7586)  
+For a Stack Overflow answer - which took me **3 years** to figure out.  I ended up writing code to generate a regex from an intermediate stack-based grammar. fun stuff: [Converting PCRE recursive regex pattern to .NET balancing groups definition](https://stackoverflow.com/a/20644634/7586)  
 How can we write this grammar using .NET's balancing groups?
 ```
 Q -> \w | '[' A ';' Q* ','? Q* ']' | '<' A '>'
@@ -22,7 +22,7 @@ A -> (Q | ',')*
 // match A
 ```
 
-## Rectagle puzzle solver
+## Rectangle puzzle solver
 Source: [`SmallRectangles.cs`](RecreationalRegex/Rectangles/SmallRectangles.cs)
 Blog post: [Filling a large rectangle with smaller rectangles using regular expressions](https://kobikobi.wordpress.com/2016/10/11/filling-a-large-rectangle-with-smaller-rectangles-using-regular-expressions/)  
 <img src="./Images/regtangles_smaller.png">
@@ -47,12 +47,12 @@ Source: [`/DivisibleByThree.cs`](RecreationalRegex/Numeric/DivisibleByThree.cs)
 Blog post: [Finding Decimal Numbers that are Divisible by Three](https://kobikobi.wordpress.com/2011/05/19/net-regular-expressions-finding-decimal-numbers-that-are-divisible-by-three/)
 
 ## Match mixed balanced parentheses
-Match balanced expressions with mixed kinds of paretheses, for example `{3[5]([12]34)}`. This is highly irregular.  
+Match balanced expressions with mixed kinds of parentheses, for example `{3[5]([12]34)}`. This is highly irregular.  
 Source: [`Parentheses.cs`](RecreationalRegex/Parentheses/Parentheses.cs)  
 Blog post: [Matching Mixed Balanced Parentheses](https://kobikobi.wordpress.com/2010/12/14/net-regex-matching-mixed-balanced-parentheses/)
 
-## Acrynom finder
-Match acrynoms and their meaning, for example `Three Lettered Acronyms (TLA)`  
+## Acronym finder
+Match acronym and their meaning, for example `Three Lettered Acronyms (TLA)`  
 Source: [`StackOverflowAsnwers.cs - FindAcronymsRegex`]  
 Blog post: [Finding Acronyms in text, and Reversing the Stack](https://kobikobi.wordpress.com/2011/01/04/net-regular-expressions-finding-acronyms-and-reversing-the-stack/)
 
