@@ -10,7 +10,7 @@ namespace Kobi.RecreationalRegex.Parentheses
         public static readonly string Basic = @"^(?<B>)abc(?<A-B>a)\k<A>?";
 
         /// <summary>
-        /// Match mixed balanced parentheses - http://kobikobi.wordpress.com/2010/12/14/net-regex-matching-mixed-balanced-parentheses/
+        /// Match mixed balanced parentheses - https://kobikobi.wordpress.com/2010/12/14/net-regex-matching-mixed-balanced-parentheses/
         /// </summary>
         public static readonly string BalancedParenthesesPattern = @"
 (
@@ -26,7 +26,7 @@ namespace Kobi.RecreationalRegex.Parentheses
         public static readonly Regex BalancedParenthesesRegex = new Regex(BalancedParenthesesPattern, RegexOptions.IgnorePatternWhitespace);
 
         /// <summary>
-        /// From http://retkomma.wordpress.com/2009/09/26/regex-balancing-group-in-depth/
+        /// From https://retkomma.wordpress.com/2009/09/26/regex-balancing-group-in-depth/
         /// </summary>
         public static readonly string BalancedParenthesesFromLinguisticForms = @"
 (?>
