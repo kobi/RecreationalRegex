@@ -1,7 +1,7 @@
 # What's this?
 
 Regular expressions that do things!  
-.NET has a unique regular expression engine which captures strings into a stack and allow full access to it during the match using [balancing groups](https://stackoverflow.com/q/17003799/7586)
+.NET has a unique regular expression engine which captures strings into a stack and allow full access to it during the match using [balancing groups](https://stackoverflow.com/q/17003799/7586).
 
 # How to use?
 
@@ -9,18 +9,11 @@ The easiest option is to run `dotnet test`, this will run all existing tests and
 
 # So what's in there?
 
-
 ## Maze-solving regex
 
 Source: [`Mazes.cs`](RecreationalRegex/Mazes/Mazes.cs)  
 Blog post: [Solving mazes using regular expressions](https://kobikobi.wordpress.com/2013/07/06/solving-mazes-using-regular-expressions/)  
 <img src="./Images/maze.png">
-
-## Rectagle puzzle solver
-
-Source: [`SmallRectangles.cs`](RecreationalRegex/Rectangles/SmallRectangles.cs)
-Blog post: [Filling a large rectangle with smaller rectangles using regular expressions](https://kobikobi.wordpress.com/2016/10/11/filling-a-large-rectangle-with-smaller-rectangles-using-regular-expressions/)  
-<img src="./Images/regtangles_smaller.png">
 
 ## Convert PCRE recursive grammar to .NET regex
 
@@ -33,9 +26,22 @@ A -> (Q | ',')*
 // match A
 ```
 
-## Find cartesian product between letters of two words
-Get two words as input and return all combinations of letters: `123 abcd`: `1a 1b 1c 1d 2a 2b 2c 2d 3a 3b 3c 3d`
-Source: [`CartesianProductTests.cs`](RecreationalRegex/Combinatorics/CartesianProductTests.cs)
+## Rectagle puzzle solver
+
+Source: [`SmallRectangles.cs`](RecreationalRegex/Rectangles/SmallRectangles.cs)
+Blog post: [Filling a large rectangle with smaller rectangles using regular expressions](https://kobikobi.wordpress.com/2016/10/11/filling-a-large-rectangle-with-smaller-rectangles-using-regular-expressions/)  
+<img src="./Images/regtangles_smaller.png">
+
+## Regex to find comments in regex
+Yep  
+Source: [`StackOverflowAsnwers.cs - FindRegexComments`](RecreationalRegex/StackOverflowAnswers/StackOverflowAsnwers.cs)
+Stack Overflow answer: [How to extract regex comment?](https://stackoverflow.com/q/5073826/7586)
+
+## Match the Fibonacci sequence
+O NO BAD REGEX MATCHING OBJECTIONABLE HUMUHUMUNUKUNUKUAPUAA   
+Source: [`Fibonacci.cs`](RecreationalRegex/WordLengths/Fibonacci.cs)  
+Blog post: [Match Words in Fibonacci Lengths](https://kobikobi.wordpress.com/2010/09/06/using-net-regex-balancing-groups-to-match-words-in-fibonacci-lengths/)  
+Random thought: If we're only matching the same character (`x xx xxx xxxxx`...), it's possible to write [self-referencing capturing groups](https://stackoverflow.com/q/3644266/7586) to match these - see Stack Overflow post by polygenelubricants.
 
 ## Numeric
 
@@ -51,18 +57,11 @@ Match balanced expressions with mixed kinds of paretheses, for example `{3[5]([1
 Source: [`Parentheses.cs`](RecreationalRegex/Parentheses/Parentheses.cs)  
 Blog post: [Matching Mixed Balanced Parentheses](https://kobikobi.wordpress.com/2010/12/14/net-regex-matching-mixed-balanced-parentheses/)
 
-## Regex to find comments in regex
-Yep  
-Source: [`StackOverflowAsnwers.cs - FindRegexComments`](RecreationalRegex/StackOverflowAnswers/StackOverflowAsnwers.cs)
-Stack Overflow answer: [How to extract regex comment?](https://stackoverflow.com/q/5073826/7586)
-
 ## Acrynom finder
 Match acrynoms and their meaning, for example `Three Lettered Acronyms (TLA)`  
 Source: [`StackOverflowAsnwers.cs - FindAcronymsRegex`]  
 Blog post: [Finding Acronyms in text, and Reversing the Stack](https://kobikobi.wordpress.com/2011/01/04/net-regular-expressions-finding-acronyms-and-reversing-the-stack/)
 
-## Match the Fibonacci sequence
-O NO BAD REGEX MATCHING OBJECTIONABLE HUMUHUMUNUKUNUKUAPUAA   
-Source: [`Fibonacci.cs`](RecreationalRegex/WordLengths/Fibonacci.cs)  
-Blog post: [Match Words in Fibonacci Lengths](https://kobikobi.wordpress.com/2010/09/06/using-net-regex-balancing-groups-to-match-words-in-fibonacci-lengths/)  
-Random thought: If we're only matching the same character (`x xx xxx xxxxx`...), it's possible to write [self-referencing capturing groups](https://stackoverflow.com/q/3644266/7586) to match these - see Stack Overflow post by polygenelubricants.
+## Find cartesian product between letters of two words
+Get two words as input and return all combinations of letters: `123 abcd`: `1a 1b 1c 1d 2a 2b 2c 2d 3a 3b 3c 3d`
+Source: [`CartesianProductTests.cs`](RecreationalRegex/Combinatorics/CartesianProductTests.cs)
